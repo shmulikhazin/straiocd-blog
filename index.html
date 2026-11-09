@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STRAIOCD Model - International Research Portal & Raw Data Archive</title>
     <meta name="description" content="ארכיון מחקר מטאורולוגי מתקדם המבוסס על מדידות לווין, סונדות ותחנות בפועל - מודל STRAIOCD.">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/meteorology.png">
 
@@ -72,7 +71,6 @@
     </style>
 </head>
 <body class="bg-brand-900 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
-
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 glass-panel border-b border-slate-800 px-6 py-4 flex justify-between items-center">
         <a href="#" class="flex items-center space-x-3 space-x-reverse text-decoration-none">
@@ -158,7 +156,7 @@
             <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-brand-900/50">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-shield-halved text-rose-400"></i>
-                    <span id="modalTitleText" data-i18n="modalAdminTitle">ניהול: פרסום מאמר חדש והעלאת קבצים</span>
+                    <span id="modalTitleText" data-i18n="modalAdminTitle">ניהול: פרסום מאמר חדש והעלאת קבצים לענן</span>
                 </h3>
                 <button onclick="closePostModal()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -236,8 +234,8 @@
     <!-- מערכת תרגום מובנית + חיבור Cloudinary לענן -->
     <script>
         // ================= CONFIG CLOUDINARY =================
-        const CLOUD_NAME = 'כאן_הכנס_את_השם_שלך'; // החלף ב-Cloud Name שלך מ-Cloudinary
-        const UPLOAD_PRESET = 'ml_default';      // שם ה-Preset שיצרת (למשל ml_default)
+        const CLOUD_NAME = 'ytunoetw';          // שם הענן מתוך לוח הבקרה שלך
+        const UPLOAD_PRESET = 'ml_default';      // שם ה-Preset ב-Cloudinary
         // ====================================================
 
         const translations = {
@@ -513,7 +511,6 @@
             let uploadedFileName = null;
             let uploadedFileType = null;
 
-            // אם נבחר קובץ חדש להעלאה
             if (fileInput && fileInput.files && fileInput.files[0]) {
                 const fileRes = await uploadToCloudinary(fileInput.files[0]);
                 if (fileRes) {
@@ -521,14 +518,13 @@
                     uploadedFileName = fileRes.name;
                     uploadedFileType = fileRes.type;
                 } else {
-                    return; // עצור אם ההעלאה נכשלה
+                    return;
                 }
             }
 
             let posts = getPosts();
             
             if (editId) {
-                // עריכת מאמר קיים
                 const index = posts.findIndex(p => p.id === editId);
                 if (index !== -1) {
                     posts[index].title = titleInput ? titleInput.value : '';
@@ -544,7 +540,6 @@
                     }
                 }
             } else {
-                // יצירת מאמר חדש
                 const newPost = {
                     id: 'post-' + Date.now(),
                     title: titleInput ? titleInput.value : '',
