@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STRAIOCD Model - International Research Portal & Raw Data Archive</title>
     <meta name="description" content="ארכיון מחקר מטאורולוגי מתקדם המבוסס על מדידות לווין, סונדות ותחנות בפועל - מודל STRAIOCD.">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/meteorology.png">
 
@@ -71,6 +72,7 @@
     </style>
 </head>
 <body class="bg-brand-900 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
+
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 glass-panel border-b border-slate-800 px-6 py-4 flex justify-between items-center">
         <a href="#" class="flex items-center space-x-3 space-x-reverse text-decoration-none">
@@ -95,7 +97,7 @@
                     <button onclick="setLanguage('he')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>עברית (Hebrew)</span><span>HE</span></button>
                     <button onclick="setLanguage('en')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>English (אנגלית)</span><span>EN</span></button>
                     <button onclick="setLanguage('ar')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>العربية (ערבית)</span><span>AR</span></button>
-                    <button onclick="setLanguage('ru')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Русский (רוסית)</span><span>RU</span></button>
+                    <button onclick="setLanguage('ru')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Русский (רוсית)</span><span>RU</span></button>
                     <button onclick="setLanguage('uk')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Українська (אוקראינית)</span><span>UK</span></button>
                     <button onclick="setLanguage('zh')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>中文 (סינית)</span><span>ZH</span></button>
                     <button onclick="setLanguage('ja')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>日本語 (יפנית)</span><span>JA</span></button>
@@ -156,7 +158,7 @@
             <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-brand-900/50">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-shield-halved text-rose-400"></i>
-                    <span id="modalTitleText" data-i18n="modalAdminTitle">ניהול: פרסום מאמר חדש והעלאת קבצים לענן</span>
+                    <span id="modalTitleText" data-i18n="modalAdminTitle">ניהול: פרסום מאמר חדש והעלאת קבצים</span>
                 </h3>
                 <button onclick="closePostModal()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -188,18 +190,19 @@
                     <input type="text" id="postSources" placeholder="NOAA-20, METOP-C" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
                 </div>
 
+                <!-- שדה חדש להדבקת כתובת אינטרנט של תמונה -->
                 <div class="p-4 bg-brand-900/60 border border-slate-800 rounded-xl space-y-2">
                     <label class="block text-xs font-semibold text-cyan-400 flex items-center gap-2">
-                        <i class="fa-solid fa-file-arrow-up"></i>
-                        <span data-i18n="lblFile">העלאת קובץ מחקר לענן Cloudinary (PDF, תמונות, TXT)</span>
+                        <i class="fa-solid fa-link"></i>
+                        <span>הדבק כתובת אינטרנט של תמונה (Image URL - פומבי לכולם)</span>
                     </label>
-                    <input type="file" id="postFile" class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-500 file:text-brand-900 hover:file:bg-cyan-400 cursor-pointer">
-                    <p class="text-[11px] text-slate-400" id="currentFileHint"></p>
+                    <input type="url" id="imageUrlInput" placeholder="https://example.com/image.jpg" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500 font-mono">
+                    <p class="text-[11px] text-slate-400">תמונה זו תוצג אוטומטית ובצורה פומבית לכל מי שייכנס למאמר.</p>
                 </div>
 
                 <div class="pt-4 border-t border-slate-800 flex justify-end space-x-3 space-x-reverse">
                     <button type="button" onclick="closePostModal()" class="px-4 py-2 rounded-lg text-sm text-slate-300 bg-slate-800" data-i18n="btnCancel">ביטול</button>
-                    <button type="submit" id="saveBtnSubmit" class="px-5 py-2 rounded-lg text-sm font-bold bg-cyan-500 text-brand-900 shadow-lg" data-i18n="btnSave">שמור ופרסם כמנהל</button>
+                    <button type="submit" class="px-5 py-2 rounded-lg text-sm font-bold bg-cyan-500 text-brand-900 shadow-lg" data-i18n="btnSave">שמור ופרסם כמנהל</button>
                 </div>
             </form>
         </div>
@@ -231,25 +234,11 @@
         <p class="text-slate-500 text-xs">DOI: <a href="https://doi.org/10.5281/zenodo.18615544" target="_blank" class="text-cyan-400 hover:underline">10.5281/zenodo.18615544</a></p>
     </footer>
 
-    <!-- מערכת תרגום מובנית + חיבור Cloudinary לענן -->
+    <!-- מערכת תרגום מובנית + תמיכה בקישורי תמונות פומביים -->
     <script>
-        // ================= CONFIG CLOUDINARY =================
-        const CLOUD_NAME = 'ytunoetw';          // שם הענן מתוך לוח הבקרה שלך
-        const UPLOAD_PRESET = 'ml_default';      // שם ה-Preset ב-Cloudinary
-        // ====================================================
-
         const translations = {
-            he: { langName: "עברית", adminBtn: "פרסם מאמר", heroTitle: "ארכיון נתוני גולם ומאמרים מטאורולוגיים", heroDesc: "מערכת מחקר מטאורולוגית מבוססת מדידות לווין ותחנות בפועל. צפה בקבצים, הורד נתונים, קרא מאמרים והשתתף בדיונים בתגובות.", searchPlaceholder: "חפש לפי כותרת, תגיות, או נתונים...", viewArticleBtn: "צפה במאמר וקובץ", commentsText: "תגובות", deleteBtn: "מחק", editBtn: "ערוך", modalAdminTitle: "ניהול: פרסום מאמר חדש והעלאת קבצים לענן", modalAdminEditTitle: "ניהול: עריכת מאמר קיים", lblTitle: "כותרת המאמר", lblCategory: "קטגוריה", lblAbstract: "תקציר קצר", lblContent: "תוכן המאמר המלא (תומך HTML)", lblSources: "מקורות נתונים גולמיים (מופרדים בפסיק)", lblFile: "העלאת קובץ מחקר לענן Cloudinary (PDF, תמונות, TXT)", btnCancel: "ביטול", btnSave: "שמור שינויים", noPosts: "לא נמצאו מאמרים.", downloadFile: "הורד קובץ", openPdf: "פתח PDF", commentsTitle: "תגובות", commentAuthorPlaceholder: "שם / כינוי", commentTextPlaceholder: "תגובה...", sendBtn: "שלח" },
-            en: { langName: "English", adminBtn: "Publish Article", heroTitle: "Raw Data & Meteorological Research Archive", heroDesc: "Meteorological research system based on actual satellite and station measurements. View files, download data, read papers, and join discussions.", searchPlaceholder: "Search by title, tags, or data...", viewArticleBtn: "View Article & File", commentsText: "Comments", deleteBtn: "Delete", editBtn: "Edit", modalAdminTitle: "Admin: Publish New Article & Cloud Upload", modalAdminEditTitle: "Admin: Edit Existing Article", lblTitle: "Article Title", lblCategory: "Category", lblAbstract: "Short Abstract", lblContent: "Full Content (HTML Supported)", lblSources: "Raw Data Sources (Comma separated)", lblFile: "Upload Research File to Cloud (PDF, Images, TXT)", btnCancel: "Cancel", btnSave: "Save Changes", noPosts: "No articles found.", downloadFile: "Download", openPdf: "Open PDF", commentsTitle: "Comments", commentAuthorPlaceholder: "Name / Nickname", commentTextPlaceholder: "Comment...", sendBtn: "Send" },
-            ar: { langName: "العربية", adminBtn: "نشر مقال", heroTitle: "أرشيف البيانات الخام والبحوث الأرصاد الجوية", heroDesc: "نظام بحث أرصاد جوية يعتمد على قياسات الأقمار الصناعية والمحطات الفعلية.", searchPlaceholder: "البحث حسب العنوان أو العلامات...", viewArticleBtn: "عرض المقال والملف", commentsText: "تعليقات", deleteBtn: "حذف", editBtn: "تعديل", modalAdminTitle: "الإدارة: نشر مقال جديد", modalAdminEditTitle: "الإدارة: تعديل مقال", lblTitle: "عنوان المقال", lblCategory: "الفئة", lblAbstract: "نبذة مختصرة", lblContent: "المحتوى الكامل", lblSources: "مصادر البيانات", lblFile: "رفع ملف البحث للسحاب", btnCancel: "إلغاء", btnSave: "حفظ التعديلات", noPosts: "لم يتم العثور على مقالات.", downloadFile: "تحميل", openPdf: "فتح PDF", commentsTitle: "تعليقات", commentAuthorPlaceholder: "الاسم", commentTextPlaceholder: "تعليق...", sendBtn: "إرسال" },
-            ru: { langName: "Русский", adminBtn: "Опубликовать", heroTitle: "Архив сырых данных и метеорологических исследований", heroDesc: "Метеорологическая исследовательская система на основе реальных измерений со спутников и станций.", searchPlaceholder: "Поиск по названию или тегам...", viewArticleBtn: "Смотреть статью и файл", commentsText: "Комментарии", deleteBtn: "Удалить", editBtn: "Изменить", modalAdminTitle: "Управление: Публикация статьи", modalAdminEditTitle: "Управление: Редактирование статьи", lblTitle: "Название статьи", lblCategory: "Категория", lblAbstract: "Аннотация", lblContent: "Полный текст (HTML)", lblSources: "Источники данных", lblFile: "Загрузить файл в облако", btnCancel: "Отмена", btnSave: "Сохранить изменения", noPosts: "Статьи не найдены.", downloadFile: "Скачать", openPdf: "Открыть PDF", commentsTitle: "Комментарии", commentAuthorPlaceholder: "Имя", commentTextPlaceholder: "Комментарий...", sendBtn: "Отправить" },
-            uk: { langName: "Українська", adminBtn: "Опублікувати", heroTitle: "Архів сирих даних та метеорологічних досліджень", heroDesc: "Метеорологічна дослідницька система на основі реальних вимірювань зі супутників та станцій.", searchPlaceholder: "Пошук за назвою, тегами або даними...", viewArticleBtn: "Переглянути статтю", commentsText: "Коментарі", deleteBtn: "Видалити", editBtn: "Редагувати", modalAdminTitle: "Адмін: Публікація нової статті", modalAdminEditTitle: "Адмін: Редагування статті", lblTitle: "Назва статті", lblCategory: "Категорія", lblAbstract: "Короткий анонс", lblContent: "Повний вміст (HTML)", lblSources: "Джерела даних", lblFile: "Завантажити файл у хмару", btnCancel: "Скасувати", btnSave: "Зберегти зміни", noPosts: "Статей не знайдено.", downloadFile: "Завантажити", openPdf: "Відкрити PDF", commentsTitle: "Коментарі", commentAuthorPlaceholder: "Ім'я", commentTextPlaceholder: "Коментар...", sendBtn: "Надіслати" },
-            zh: { langName: "中文", adminBtn: "发布文章", heroTitle: "原始数据与气象研究档案", heroDesc: "基于实际卫星和气象站测量的情报气象研究系统。", searchPlaceholder: "按标题、标签或数据搜索...", viewArticleBtn: "查看文章和文件", commentsText: "评论", deleteBtn: "删除", editBtn: "编辑", modalAdminTitle: "管理：发布新文章", modalAdminEditTitle: "管理：编辑文章", lblTitle: "文章标题", lblCategory: "类别", lblAbstract: "摘要", lblContent: "全文内容", lblSources: "数据来源", lblFile: "上传文件至云端", btnCancel: "取消", btnSave: "保存更改", noPosts: "未找到文章。", downloadFile: "下载", openPdf: "打开PDF", commentsTitle: "评论", commentAuthorPlaceholder: "姓名", commentTextPlaceholder: "评论...", sendBtn: "发送" },
-            ja: { langName: "日本語", adminBtn: "記事を公開", heroTitle: "生データと気象研究アーカイブ", heroDesc: "実際の衛星および観測所の測定に基づく気象研究システム。", searchPlaceholder: "タイトル、タグ、データで検索...", viewArticleBtn: "記事とファイルを表示", commentsText: "コメント", deleteBtn: "削除", editBtn: "編集", modalAdminTitle: "管理者: 新しい記事を公開", modalAdminEditTitle: "管理者: 記事を編集", lblTitle: "記事のタイトル", lblCategory: "カテゴリ", lblAbstract: "概要", lblContent: "本文", lblSources: "データソース", lblFile: "クラウドにファイルをアップロード", btnCancel: "キャンセル", btnSave: "変更を保存", noPosts: "記事が見つかりません。", downloadFile: "ダウンロード", openPdf: "PDFを開く", commentsTitle: "コメント", commentAuthorPlaceholder: "お名前", commentTextPlaceholder: "コメント...", sendBtn: "送信" },
-            es: { langName: "Español", adminBtn: "Publicar", heroTitle: "Archivo de datos sin procesar e investigación meteorológica", heroDesc: "Sistema de investigación meteorológica basado en mediciones reales de satélites y estaciones.", searchPlaceholder: "Buscar por título, etiquetas o datos...", viewArticleBtn: "Ver artículo y archivo", commentsText: "Comentarios", deleteBtn: "Eliminar", editBtn: "Editar", modalAdminTitle: "Admin: Publicar nuevo artículo", modalAdminEditTitle: "Admin: Editar artículo", lblTitle: "Título del artículo", lblCategory: "Categoría", lblAbstract: "Resumen", lblContent: "Contenido completo", lblSources: "Fuentes de datos", lblFile: "Subir archivo a la nube", btnCancel: "Cancelar", btnSave: "Guardar cambios", noPosts: "No se encontraron artículos.", downloadFile: "Descargar", openPdf: "Abrir PDF", commentsTitle: "Comentarios", commentAuthorPlaceholder: "Nombre", commentTextPlaceholder: "Comentario...", sendBtn: "Enviar" },
-            it: { langName: "Italiano", adminBtn: "Pubblica", heroTitle: "Archivio di dati grezzi e ricerca meteorologica", heroDesc: "Sistema di ricerca meteorologica basato su misurazioni reali da satelliti e stazioni.", searchPlaceholder: "Cerca per titolo, tag o dati...", viewArticleBtn: "Visualizza articolo e file", commentsText: "Commenti", deleteBtn: "Elimina", editBtn: "Modifica", modalAdminTitle: "Admin: Pubblica nuovo articolo", modalAdminEditTitle: "Admin: Modifica articolo", lblTitle: "Titolo dell'articolo", lblCategory: "Categoria", lblAbstract: "Sintesi", lblContent: "Contenuto", lblSources: "Fonti", lblFile: "Carica file sul cloud", btnCancel: "Annulla", btnSave: "Salva modifiche", noPosts: "Nessun articolo trovato.", downloadFile: "Scarica", openPdf: "Apri PDF", commentsTitle: "Commenti", commentAuthorPlaceholder: "Nome", commentTextPlaceholder: "Commento...", sendBtn: "Invia" },
-            de: { langName: "Deutsch", adminBtn: "Artikel veröffentlichen", heroTitle: "Rohdaten- und meteorologisches Forschungsarchiv", heroDesc: "Meteorologisches Forschungssystem basierend auf tatsächlichen Satelliten- und Stationsmessungen.", searchPlaceholder: "Nach Titel, Tags oder Daten suchen...", viewArticleBtn: "Artikel und Datei anzeigen", commentsText: "Kommentare", deleteBtn: "Löschen", editBtn: "Bearbeiten", modalAdminTitle: "Admin: Neuen Artikel veröffentlichen", modalAdminEditTitle: "Admin: Artikel bearbeiten", lblTitle: "Titel", lblCategory: "Kategorie", lblAbstract: "Zusammenfassung", lblContent: "Inhalt", lblSources: "Quellen", lblFile: "Datei in Cloud hochladen", btnCancel: "Abbrechen", btnSave: "Änderungen speichern", noPosts: "Keine Artikel gefunden.", downloadFile: "Herunterladen", openPdf: "PDF öffnen", commentsTitle: "Kommentare", commentAuthorPlaceholder: "Name", commentTextPlaceholder: "Kommentar...", sendBtn: "Senden" },
-            fr: { langName: "Français", adminBtn: "Publier", heroTitle: "Archives de données brutes et de recherche météorologique", heroDesc: "Système de recherche météorologique basé sur des mesures réelles de satellites et de stations.", searchPlaceholder: "Rechercher par titre, tags ou données...", viewArticleBtn: "Voir l'article et le fichier", commentsText: "Commentaires", deleteBtn: "Supprimer", editBtn: "Modifier", modalAdminTitle: "Admin: Publier un article", modalAdminEditTitle: "Admin: Modifier l'article", lblTitle: "Titre", lblCategory: "Catégorie", lblAbstract: "Résumé", lblContent: "Contenu", lblSources: "Sources", lblFile: "Télécharger un fichier sur le cloud", btnCancel: "Annuler", btnSave: "Enregistrer", noPosts: "Aucun article trouvé.", downloadFile: "Télécharger", openPdf: "Ouvrir PDF", commentsTitle: "Commentaires", commentAuthorPlaceholder: "Nom", commentTextPlaceholder: "Commentaire...", sendBtn: "Envoyer" }
+            he: { langName: "עברית", adminBtn: "פרסם מאמר", heroTitle: "ארכיון נתוני גולם ומאמרים מטאורולוגיים", heroDesc: "מערכת מחקר מטאורולוגית מבוססת מדידות לווין ותחנות בפועל. צפה בקבצים, הורד נתונים, קרא מאמרים והשתתף בדיונים בתגובות.", searchPlaceholder: "חפש לפי כותרת, תגיות, או נתונים...", viewArticleBtn: "צפה במאמר ותמונה", commentsText: "תגובות", deleteBtn: "מחק", editBtn: "ערוך", modalAdminTitle: "ניהול: פרסום מאמר חדש והוספת תמונה", modalAdminEditTitle: "ניהול: עריכת מאמר קיים", lblTitle: "כותרת המאמר", lblCategory: "קטגוריה", lblAbstract: "תקציר קצר", lblContent: "תוכן המאמר המלא (תומך HTML)", lblSources: "מקורות נתונים גולמיים (מופרדים בפסיק)", btnCancel: "ביטול", btnSave: "שמור שינויים", noPosts: "לא נמצאו מאמרים.", openImage: "פתח תמונה בחלון חדש", commentsTitle: "תגובות", commentAuthorPlaceholder: "שם / כינוי", commentTextPlaceholder: "תגובה...", sendBtn: "שלח" },
+            en: { langName: "English", adminBtn: "Publish Article", heroTitle: "Raw Data & Meteorological Research Archive", heroDesc: "Meteorological research system based on actual satellite and station measurements. View files, download data, read papers, and join discussions.", searchPlaceholder: "Search by title, tags, or data...", viewArticleBtn: "View Article & Image", commentsText: "Comments", deleteBtn: "Delete", editBtn: "Edit", modalAdminTitle: "Admin: Publish Article & Image URL", modalAdminEditTitle: "Admin: Edit Article", lblTitle: "Article Title", lblCategory: "Category", lblAbstract: "Short Abstract", lblContent: "Full Content (HTML Supported)", lblSources: "Raw Data Sources (Comma separated)", btnCancel: "Cancel", btnSave: "Save Changes", noPosts: "No articles found.", openImage: "Open Image in New Tab", commentsTitle: "Comments", commentAuthorPlaceholder: "Name / Nickname", commentTextPlaceholder: "Comment...", sendBtn: "Send" }
         };
 
         let currentLang = localStorage.getItem('straiocd_lang') || 'he';
@@ -332,9 +321,7 @@
                 abstract: 'תצפית ישירה על וקטורי לחץ סטרטוספריים ברמת 70hPa ואנומליות ריכוז אוזון.',
                 content: `<p class="mb-4">על פי <strong>מודל STRAIOCD</strong>, הסטרטוספירה מתפקדת כגורם הראשוני והבלעדי לכל אירועי שבירת הגלים בטרופוספירה.</p>`,
                 sources: ['לוויין NOAA-20', 'METOP-C Sonde'],
-                fileData: null,
-                fileName: null,
-                fileType: null,
+                imageUrl: '',
                 comments: []
             }
         ];
@@ -432,7 +419,6 @@
             if (!isAdminLoggedIn) return;
             document.getElementById('editPostId').value = '';
             document.getElementById('newPostForm').reset();
-            document.getElementById('currentFileHint').textContent = '';
             document.getElementById('modalTitleText').textContent = translations[currentLang].modalAdminTitle;
             document.getElementById('postModal').classList.remove('hidden');
         }
@@ -449,53 +435,13 @@
             document.getElementById('postAbstract').value = post.abstract || '';
             document.getElementById('postContent').value = post.content || '';
             document.getElementById('postSources').value = Array.isArray(post.sources) ? post.sources.join(', ') : (post.sources || '');
-            
-            const hint = document.getElementById('currentFileHint');
-            if (post.fileName) {
-                hint.textContent = `קובץ קיים בענן: ${post.fileName}`;
-            } else {
-                hint.textContent = '';
-            }
+            document.getElementById('imageUrlInput').value = post.imageUrl || '';
 
             document.getElementById('modalTitleText').textContent = translations[currentLang].modalAdminEditTitle;
             document.getElementById('postModal').classList.remove('hidden');
         }
 
-        // פונקציה להעלאת קובץ ישירות ל-Cloudinary
-        async function uploadToCloudinary(file) {
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', UPLOAD_PRESET);
-
-            const submitBtn = document.getElementById('saveBtnSubmit');
-            if (submitBtn) submitBtn.textContent = 'מעלה קובץ לענן...';
-
-            try {
-                const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await response.json();
-                if (submitBtn) submitBtn.textContent = translations[currentLang].btnSave;
-                
-                if (data.secure_url) {
-                    return {
-                        url: data.secure_url,
-                        name: file.name,
-                        type: file.type || 'application/pdf'
-                    };
-                } else {
-                    alert('שגיאה בהעלאת הקובץ לענן.');
-                    return null;
-                }
-            } catch (err) {
-                if (submitBtn) submitBtn.textContent = translations[currentLang].btnSave;
-                alert('שגיאת תקשורת בהעלאה לענן.');
-                return null;
-            }
-        }
-
-        async function handleSavePost(event) {
+        function handleSavePost(event) {
             event.preventDefault();
             if (!isAdminLoggedIn) return;
             
@@ -505,22 +451,7 @@
             const absInput = document.getElementById('postAbstract');
             const contentInput = document.getElementById('postContent');
             const sourcesInput = document.getElementById('postSources');
-            const fileInput = document.getElementById('postFile');
-
-            let uploadedFileUrl = null;
-            let uploadedFileName = null;
-            let uploadedFileType = null;
-
-            if (fileInput && fileInput.files && fileInput.files[0]) {
-                const fileRes = await uploadToCloudinary(fileInput.files[0]);
-                if (fileRes) {
-                    uploadedFileUrl = fileRes.url;
-                    uploadedFileName = fileRes.name;
-                    uploadedFileType = fileRes.type;
-                } else {
-                    return;
-                }
-            }
+            const imageUrlInput = document.getElementById('imageUrlInput');
 
             let posts = getPosts();
             
@@ -532,12 +463,7 @@
                     posts[index].abstract = absInput ? absInput.value : '';
                     posts[index].content = contentInput ? contentInput.value : '';
                     posts[index].sources = sourcesInput && sourcesInput.value ? sourcesInput.value.split(',').map(s => s.trim()) : ['Satellite'];
-                    
-                    if (uploadedFileUrl) {
-                        posts[index].fileData = uploadedFileUrl;
-                        posts[index].fileName = uploadedFileName;
-                        posts[index].fileType = uploadedFileType;
-                    }
+                    posts[index].imageUrl = imageUrlInput ? imageUrlInput.value.trim() : '';
                 }
             } else {
                 const newPost = {
@@ -548,9 +474,7 @@
                     abstract: absInput ? absInput.value : '',
                     content: contentInput ? contentInput.value : '',
                     sources: sourcesInput && sourcesInput.value ? sourcesInput.value.split(',').map(s => s.trim()) : ['Satellite'],
-                    fileData: uploadedFileUrl || null,
-                    fileName: uploadedFileName || null,
-                    fileType: uploadedFileType || null,
+                    imageUrl: imageUrlInput ? imageUrlInput.value.trim() : '',
                     comments: []
                 };
                 posts.unshift(newPost);
@@ -559,7 +483,7 @@
             try {
                 localStorage.setItem('straiocd_posts', JSON.stringify(posts));
             } catch (e) {
-                alert('שגיאה בשמירת הנתונים.');
+                alert('שגיאה בשמירת המאמר.');
                 return;
             }
 
@@ -613,15 +537,19 @@
                 }
             }
 
-            let fileSection = '';
-            if (post.fileData && post.fileName) {
-                let previewBox = '';
-                if (post.fileType && post.fileType.startsWith('image/')) {
-                    previewBox = `<div class="mt-3 p-2 bg-brand-950 rounded-lg border border-slate-700 flex justify-center"><img src="${post.fileData}" class="max-h-96 rounded object-contain"></div>`;
-                } else {
-                    previewBox = `<div class="mt-3 p-4 bg-brand-950 rounded-lg border border-slate-700 text-center space-y-2"><i class="fa-solid fa-file-pdf text-rose-500 text-3xl"></i><br><a href="${post.fileData}" target="_blank" class="bg-slate-800 text-cyan-400 text-xs px-4 py-2 rounded-lg inline-block font-bold">${t.openPdf}</a></div>`;
-                }
-                fileSection = `<div class="p-4 bg-brand-900 border border-cyan-500/40 rounded-xl space-y-3"><div class="flex items-center justify-between"><span class="text-sm font-bold text-white">${post.fileName}</span><a href="${post.fileData}" download="${post.fileName}" target="_blank" class="bg-cyan-500 text-brand-900 font-bold px-4 py-2 rounded-lg text-xs">${t.downloadFile}</a></div>${previewBox}</div>`;
+            let imageSection = '';
+            if (post.imageUrl) {
+                imageSection = `
+                    <div class="p-4 bg-brand-900 border border-cyan-500/40 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between text-xs font-mono text-cyan-400">
+                            <span><i class="fa-solid fa-image ml-1"></i> תמונת מחקר פומבית</span>
+                            <a href="${post.imageUrl}" target="_blank" class="bg-cyan-500 text-brand-900 font-bold px-3 py-1 rounded hover:bg-cyan-400 transition-colors">${t.openImage}</a>
+                        </div>
+                        <div class="p-2 bg-brand-950 rounded-lg border border-slate-700 flex justify-center">
+                            <img src="${post.imageUrl}" alt="Research Image" class="max-h-96 rounded object-contain shadow-lg" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x300?text=Image+Load+Error';">
+                        </div>
+                    </div>
+                `;
             }
 
             let displayTitle = await translateText(post.title, currentLang);
@@ -636,7 +564,7 @@
                         <h1 class="text-2xl font-bold text-white">${displayTitle}</h1>
                         <div class="p-4 rounded-xl bg-brand-900/80 border border-slate-800 text-slate-300 text-sm italic">${displayAbstract}</div>
                     </div>
-                    ${fileSection}
+                    ${imageSection}
                     <div class="prose prose-invert text-slate-200 text-sm space-y-4 pt-4 border-t border-slate-800">${post.content}</div>
                     <div class="pt-6 border-t border-slate-800 space-y-4">
                         <h3 class="text-sm font-bold text-white">${t.commentsTitle} (${comments.length})</h3>
@@ -644,7 +572,7 @@
                         <form onsubmit="handleAddComment(event, '${post.id}')" class="p-4 bg-brand-900/60 border border-slate-800 rounded-xl space-y-3">
                             <input type="text" id="commentAuthor" required placeholder="${t.commentAuthorPlaceholder}" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
                             <textarea id="commentText" rows="2" required placeholder="${t.commentTextPlaceholder}" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white"></textarea>
-                            <button type="submit" class="bg-cyan-500 text-brand-900 font-bold px-4 py-1.5 rounded-lg text-xs">${t.sendBtn}</button>
+                            <button type="submit" class="bg-cyan-500 text-brand-900 font-bold px-4 py-1.5 rounded-lg text-xs hover:bg-cyan-400 transition-colors">${t.sendBtn}</button>
                         </form>
                     </div>
                 `;
@@ -658,12 +586,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'p' || e.key === 'P') {
                 const pass = prompt('סיסמת מנהל:');
-                if (pass === 'straiocd2026') {
-                    isAdminLoggedIn = true;
-                    document.getElementById('adminPostBtn').classList.remove('hidden');
-                    renderPosts();
-                    alert('מורשה כמנהל!');
-                }
+                (pass === 'straiocd2026') ? (isAdminLoggedIn = true, document.getElementById('adminPostBtn').classList.remove('hidden'), renderPosts(), alert('מורשה כמנהל!')) : null;
             }
         });
     </script>
