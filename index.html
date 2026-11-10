@@ -137,41 +137,41 @@
             </div>
         </div>
 
+        <!-- פורום דיונים פומבי מבוסס GitHub -->
+        <section class="bg-brand-700/60 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-2xl my-8">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-comments text-cyan-400"></i>
+                    <span>פורום דיונים ונתונים גולמיים (פומבי)</span>
+                </h2>
+                <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-800">Global Public Discussions</span>
+            </div>
+            
+            <p class="text-xs text-slate-300 leading-relaxed">
+                כאן ניתן להוסיף תגובות, לנהל דיונים מקצועיים ולשתף נתונים גולמיים. התגובות מחוברות ישירות למערכת הפומבית וגלויות לכל החוקרים והמבקרים באתר.
+            </p>
+
+            <!-- אזור טעינת מערכת הדיונים הפומבית מעודכן עם המזהים האמיתיים -->
+            <div id="giscus-container" class="pt-2">
+                <script src="https://giscus.app/client.js"
+                        data-repo="shmulikhazin/straiocd-blog"
+                        data-repo-id="R_kgDOVnk9WA"
+                        data-category="General"
+                        data-category-id="DIC_kwDOVnk9WM4DKxI9"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="he"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </section>
+
         <!-- Search Controls -->
-<!-- פורום דיונים פומבי מבוסס GitHub -->
-    <section class="bg-brand-700/60 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-2xl my-8">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <i class="fa-solid fa-comments text-cyan-400"></i>
-                <span>פורום דיונים ונתונים גולמיים </span>
-            </h2>
-            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-800">Global Public Discussions</span>
-        </div>
-        
-        <p class="text-xs text-slate-300 leading-relaxed">
-            כאן ניתן להוסיף תגובות, לנהל דיונים מקצועיים ולשתף נתונים גולמיים. התגובות מחוברות ישירות למערכת הפומבית וגלויות לכל החוקרים והמבקרים באתר.
-        </p>
-
-        <!-- אזור טעינת מערכת הדיונים הפומבית -->
-        <div id="giscus-container" class="pt-2">
-            <script src="https://giscus.app/client.js"
-                    data-repo="shmulikhazin/straiocd-blog"
-                    data-repo-id="R_kgDOR00000" 
-                    data-category="General"
-                    data-category-id="DIC_kwDOR0000000000"
-                    data-mapping="pathname"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="top"
-                    data-theme="transparent_dark"
-                    data-lang="he"
-                    crossorigin="anonymous"
-                    async>
-            </script>
-        </div>
-    </section>
-
         <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-brand-700/50 p-4 rounded-xl border border-slate-800">
             <div class="relative w-full">
                 <i class="fa-solid fa-magnifying-glass absolute top-3.5 right-3.5 text-slate-400"></i>
@@ -206,7 +206,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="lblCategory">קטגוריה</label>
-                    <input type="text" id="postCategory" required placeholder="לדוגמה: דינמיקה סטרטוספרית" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
+                    <input type="text" id="postCategory" required placeholder="לדוגמה: דינמיקה סטרוספרית" class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
                 </div>
 
                 <div>
@@ -358,32 +358,28 @@
                 imageUrl: 'https://i.postimg.cc/s2GkFnZJ/STRAIOCD-Model-Report-Stratospheric-Cooling-Atlantic-Cyclogenesis-1.png',
                 comments: []
             },
-
             {
-        id: 'post-3',
-        title: 'חימון סטטוספרי חריג חורף 2013 בגזרה פולארית אטלנטית',
-        category: 'דינמיקה סטטוספרית',
-        date: '2026-11-10',
-        abstract: 'חימום שובר שיאים בסטטוספרה בגזרה ארקטית אטלנטית',
-        content: '<p>חימום סטטוספרי חריג באטלנטי בחורף 2013...</p>',
-        sources: ['NOAA', 'METOP-C'],
-        imageUrl: 'https://i.postimg.cc/rm96wDy9/STRAIOCD-Spatial-Std-30h-Pa.png',
-        imageUrl: 'https://i.postimg.cc/zBkmGyDb/Screen-Shot-20261109233031.png',
-
-        comments: []
-    },
-
-           {
-        id: 'post-3',
-        title: 'וואנוס הוריקן במזרח פיסיפי סוף אוקטובר 2026',
-        category: 'צימוד סטטוספרי טרופוספרי',
-        date: '2026-11-10',
-        abstract: 'הוריקן וואנוס 2026...',
-        content: '<p>סוף אוקטובר 2026 הוריקן במזרח פיסיפי...</p>',
-        sources: ['NOAA', 'METOP-C'],
-        imageUrl: 'https://i.postimg.cc/t4FxJb6w/545445.png',
-        comments: []
-    }, 
+                id: 'post-3',
+                title: 'חימון סטטוספרי חריג חורף 2013 בגזרה פולארית אטלנטית',
+                category: 'דינמיקה סטטוספרית',
+                date: '2026-11-10',
+                abstract: 'חימום שובר שיאים בסטטוספרה בגזרה ארקטית אטלנטית',
+                content: '<p>חימום סטטוספרי חריג באטלנטי בחורף 2013...</p>',
+                sources: ['NOAA', 'METOP-C'],
+                imageUrl: 'https://i.postimg.cc/rm96wDy9/STRAIOCD-Spatial-Std-30h-Pa.png',
+                comments: []
+            },
+            {
+                id: 'post-4',
+                title: 'וואנוס הוריקן במזרח פיסיפי סוף אוקטובר 2026',
+                category: 'צימוד סטטוספרי טרופוספרי',
+                date: '2026-11-10',
+                abstract: 'הוריקן וואנוס 2026...',
+                content: '<p>סוף אוקטובר 2026 הוריקן במזרח פיסיפי...</p>',
+                sources: ['NOAA', 'METOP-C'],
+                imageUrl: 'https://i.postimg.cc/t4FxJb6w/545445.png',
+                comments: []
+            }, 
             {
                 id: 'post-1',
                 title: 'דינמיקה סטרטוספרית כמחוללת האקלים הראשונית',
