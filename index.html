@@ -138,6 +138,117 @@
         </div>
 
         <!-- Search Controls -->
+        <!-- פורום / אזור דיונים ונתונים גולמיים -->
+    <section class="bg-brand-700/60 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-2xl">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-comments text-cyan-400"></i>
+                <span>פורום דיונים ונתונים גולמיים</span>
+            </h2>
+            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-800">STRAIOCD Community</span>
+        </div>
+
+        <!-- טופס הוספת דיון חדש -->
+        <form onsubmit="handleForumSubmit(event)" class="space-y-3 bg-brand-900/80 p-4 rounded-xl border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-300">פתח דיון חדש או שתף נתונים גולמיים:</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input type="text" id="forumAuthor" required placeholder="שם / חוקר" class="bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+                <input type="text" id="forumTitle" required placeholder="נושא או כותרת הדיון" class="bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+            </div>
+            <textarea id="forumMessage" rows="3" required placeholder="כתוב כאן את ההודעה, הנתונים הגולמיים או השאלות שלך..." class="w-full bg-brand-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500 font-mono"></textarea>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-cyan-500 text-brand-900 font-bold px-4 py-2 rounded-lg text-xs hover:bg-cyan-400 transition-colors shadow-lg">
+                    פרסם בפורום
+                </button>
+            </div>
+        </form>
+
+        <!-- רשימת הדיונים בפורום -->
+        <div id="forumThreadsContainer" class="space-y-3 max-h-[500px] overflow-y-auto">
+            <!-- הדיונים יטענו לכאן אוטומטית -->
+        </div>
+    </section>
+
+    <!-- פונקציות הניהול של הפוסטים בפורום (להוסיף בתוך תגיות ה-<script> בסוף העמוד) -->
+    <script>
+        // פונקציה לשליפת דיוני הפורום
+        function getForumThreads() {
+            try {
+                const stored = localStorage.getItem('straiocd_forum_threads');
+                if (!stored) {
+                    const defaultThreads = [
+                        {
+                            id: 'thread-1',
+                            author: 'חזין',
+                            title: 'ברוכים הבאים לפורום המחקר של STRAIOCD',
+                            message: 'כאן ניתן לשתף נתונים גולמיים ממדידות לווין ותחנות, ולנהל דיונים מקצועיים על הדינמיקה הסטרטוספרית.',
+                            date: '2026-11-10 12:00'
+                        }
+                    ];
+                    localStorage.setItem('straiocd_forum_threads', JSON.stringify(defaultThreads));
+                    return defaultThreads;
+                }
+                return JSON.parse(stored);
+            } catch (e) {
+                return [];
+            }
+        }
+
+        // פונקציה להוספת דיון חדש
+        function handleForumSubmit(event) {
+            event.preventDefault();
+            const authorInput = document.getElementById('forumAuthor');
+            const titleInput = document.getElementById('forumTitle');
+            const messageInput = document.getElementById('forumMessage');
+
+            if (!authorInput.value || !titleInput.value || !messageInput.value) return;
+
+            const threads = getForumThreads();
+            const newThread = {
+                id: 'thread-' + Date.now(),
+                author: authorInput.value.trim(),
+                title: titleInput.value.trim(),
+                message: messageInput.value.trim(),
+                date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            };
+
+            threads.unshift(newThread);
+            localStorage.setItem('straiocd_forum_threads', JSON.stringify(threads));
+            
+            authorInput.value = '';
+            titleInput.value = '';
+            messageInput.value = '';
+            renderForumThreads();
+        }
+
+        // פונקציה להצגת הדיונים באתר
+        function renderForumThreads() {
+            const container = document.getElementById('forumThreadsContainer');
+            if (!container) return;
+
+            const threads = getForumThreads();
+            if (threads.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">אין עדיין דיונים בפורום. היה הראשונים לכתוב!</p>';
+                return;
+            }
+
+            container.innerHTML = threads.map(th => `
+                <div class="bg-brand-900 border border-slate-800 rounded-xl p-4 space-y-2 text-xs">
+                    <div class="flex justify-between items-center border-b border-slate-800/60 pb-2">
+                        <span class="font-bold text-cyan-400 text-sm"><i class="fa-solid fa-user-pen ml-1.5"></i>${th.title}</span>
+                        <span class="text-slate-500 font-mono">${th.date}</span>
+                    </div>
+                    <p class="text-slate-200 whitespace-pre-wrap leading-relaxed">${th.message}</p>
+                    <div class="text-[11px] text-slate-400 font-mono pt-1">מאת: <strong class="text-slate-300">${th.author}</strong></div>
+                </div>
+            `).join('');
+        }
+
+        // טעינת הפורום בעליית הדף
+        document.addEventListener('DOMContentLoaded', () => {
+            renderForumThreads();
+        });
+    </script>
         <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-brand-700/50 p-4 rounded-xl border border-slate-800">
             <div class="relative w-full">
                 <i class="fa-solid fa-magnifying-glass absolute top-3.5 right-3.5 text-slate-400"></i>
