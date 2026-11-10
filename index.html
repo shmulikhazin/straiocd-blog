@@ -313,19 +313,29 @@
         let isAdminLoggedIn = false;
 
         const initialPosts = [
- {
-        id: 'post-2',
-        title: 'אירוע מאסיבי בסהרה אוגוסט 2023',
-        category: 'צימוד סטטוספרי טרופוספרי',
-        date: '2026-11-10',
-        abstract: 'תקציר האירוע הסטרטוספרי והשפעתו על האקלים...',
-        content: '<p>תוכן המלא של המאמר יופיע כאשר משתמש ילחץ על צפייה במאמר</p>',
-        sources: ['NOAA', 'METOP-C'],
-        imageUrl: 'https://i.postimg.cc/s2GkFnZJ/STRAIOCD-Model-Report-Stratospheric-Cooling-Atlantic-Cyclogenesis-1.png',
-        comments: []
-    },
-    {
- 
+            {
+                id: 'post-2',
+                title: 'אירוע מאסיבי בסהרה אוגוסט 2023',
+                category: 'צימוד סטטוספרי טרופוספרי',
+                date: '2026-11-10',
+                abstract: 'אירוע מאסיבי בסהרה אוגוסט 2023...',
+                content: '<p>תוכן המאמר המלא שיופיע כאשר משתמש ילחץ על צפייה במאמר...</p>',
+                sources: ['NOAA', 'METOP-C'],
+                imageUrl: 'https://i.postimg.cc/s2GkFnZJ/STRAIOCD-Model-Report-Stratospheric-Cooling-Atlantic-Cyclogenesis-1.png',
+                comments: []
+            },
+            {
+                id: 'post-1',
+                title: 'דינמיקה סטרטוספרית כמחוללת האקלים הראשונית',
+                category: 'דינמיקה סטרטוספרית',
+                date: '2026-10-24',
+                abstract: 'תצפית ישירה על וקטורי לחץ סטרטוספריים ברמת 70hPa ואנומליות ריכוז אוזון.',
+                content: '<p class="mb-4">על פי <strong>מודל STRAIOCD</strong>, הסטרטוספירה מתפקדת כגורם הראשוני והבלעדי לכל אירועי שבירת הגלים בטרופוספירה.</p>',
+                sources: ['לוויין NOAA-20', 'METOP-C Sonde'],
+                imageUrl: '',
+                comments: []
+            }
+        ];
 
         function getPosts() {
             try {
