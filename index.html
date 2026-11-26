@@ -97,7 +97,7 @@
                     <button onclick="setLanguage('he')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>עברית (Hebrew)</span><span>HE</span></button>
                     <button onclick="setLanguage('en')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>English (אנגלית)</span><span>EN</span></button>
                     <button onclick="setLanguage('ar')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>العربية (ערבית)</span><span>AR</span></button>
-                    <button onclick="setLanguage('ru')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Русский (רוсית)</span><span>RU</span></button>
+                    <button onclick="setLanguage('ru')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Русский (רוסית)</span><span>RU</span></button>
                     <button onclick="setLanguage('uk')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>Українська (אוקראינית)</span><span>UK</span></button>
                     <button onclick="setLanguage('zh')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>中文 (סינית)</span><span>ZH</span></button>
                     <button onclick="setLanguage('ja')" class="w-full text-right px-4 py-2 hover:bg-brand-900 text-slate-200 hover:text-cyan-400 flex justify-between"><span>日本語 (יפנית)</span><span>JA</span></button>
@@ -656,6 +656,30 @@
                 (pass === 'straiocd2026') ? (isAdminLoggedIn = true, document.getElementById('adminPostBtn').classList.remove('hidden'), renderPosts(), alert('מורשה כמנהל!')) : null;
             }
         });
+    </script>
+
+    <!-- GoatCounter Analytics (Views & Countries) -->
+    <script data-goatcounter="https://YOUR_CODE.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
+    <!-- Download Tracker for Data & Document Files -->
+    <script>
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (!link || !link.href) return;
+
+        const url = link.href.split('?')[0].toLowerCase();
+        const extensions = ['.pdf', '.zip', '.csv', '.xlsx', '.nc', '.grib'];
+        if (!extensions.some(ext => url.endsWith(ext))) return;
+
+        if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+            window.goatcounter.count({
+                path: 'download-' + decodeURIComponent(new URL(link.href).pathname),
+                title: 'Download: ' + link.textContent.trim(),
+                event: true
+            });
+        }
+    });
     </script>
 </body>
 </html>
